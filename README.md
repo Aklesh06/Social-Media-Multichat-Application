@@ -1,2 +1,2 @@
 # Social-Media-Multichat-Application
-It is a social media chat application where there are feature of a group chat with everyone like discord app, one can have a profile and it have login and registration feature also. This application is made with frontend : HTML ,CSS , JavaScript  ,  Backend : Python , Framework : Django
+It is a social media chat application where there are feature of a group chat with everyone like discord app, one can have a profile and it have login and registration feature also. This application is specially made for all the member can chat with all member so all can share there thought and ideas. In login it have a forget password feature which send email to reset password
