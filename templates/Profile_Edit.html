@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+
+    <!-- swiper css link  -->
+    <link rel="stylesheet" href='https://unpkg.com/swiper@7/swiper-bundle.min.css' />
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'Registration.css' %}">
+    <script type="text/javascript">
+        function Job_Profile(){
+            var element = document.getElementById("batch_year").value;
+            var Occupation = document.getElementById("Occupation");
+            if(element.trim() != ''){
+              console.log(element)
+                year = element.slice(0,4)
+                if(year <= 2019){
+                  Occupation.style.display = 'block';
+                }
+              }
+            else{
+              Occupation.style.display = 'none';
+              Occupation.value = 'Under Graduate'
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+          <a href="/home"><span class="close">&times;</span></a>
+          <h2>Profile Information</h2>
+          <form id="info-form" action="edit_profile" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" id="id" name="id" class="input-field" value={{user.id}}>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-field" placeholder="Your Name" value='{{user.username}}' required>
+            <label for="age">Batch Year:</label>
+            <input type="tel" id="batch_year" name="batch_year" class="input-field" pattern="[0-9]{4}-[0-9]{4}" placeholder="Your Batch year [Ex :- 2021-2025]" onchange="Job_Profile()" value={{user.batch}} required><br>
+            <div id = "Occupation" style="display : none;">
+                <label for="age">Job Profile:</label>
+                <input type="text" id="occupation" name="occupation" class="input-field" placeholder="Current Occupation" >
+            </div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="input-field" placeholder="Your Email" value={{user.email}} required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" class="input-field" pattern="[6789][0-9]{9}" maxlength="10" placeholder="Phone no" value={{user.phone}} required>
+            <label for="name">Bio:</label>
+            <input type="text" id="bio" name="bio" class="input-field" placeholder="Your bio" maxlength="60" value='{{user.bio}}'>
+            <label for="image">Profile Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <button type="submit" class="submit-button" id="submit-button">Submit</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

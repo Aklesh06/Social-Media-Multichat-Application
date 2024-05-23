@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Event</title>
+        {% load static %}
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+
+    <!-- swiper css link  -->
+    <link rel="stylesheet" href='https://unpkg.com/swiper@7/swiper-bundle.min.css' />
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'post.css' %}">
+    </head>
+    <body>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+              <a href="/event_page"><span class="close">&times;</span></a>
+            <form action={%url "event" user.id %} method="post" enctype="multipart/form-data" class='form'>
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-lg btn-success">Upload</button>
+            </form>
+        </div>
+    </div>
+    </body>
+</html>

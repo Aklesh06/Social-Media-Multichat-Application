@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="src/icons/discord.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alumn-chat</title>
+  <link rel="stylesheet" href="alumn-chat.css" />
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Space+Grotesk:wght@500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <main class="container-grid">
+    <nav class="nav-list">
+      <div class="container-discord-brand">
+        <div class="container-discord-icon">
+          <span class="discord-icon-border"></span>
+          <svg>
+            <use href="src/icons/icons.svg#discord" />
+          </svg>
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Mensajes directos</p>
+          </div>
+        </div>
+      </div>
+      <div class="line-nav"></div>
+      <ul class="servers-list">
+        <li>
+          <span class="servers-hover-border"></span>
+          <img src="/images/lena-profile.jpg" alt="lena-profile" />
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Lena</p>
+          </div>
+        </li>
+        <li>
+          <span class="servers-hover-border"></span>
+          <img src="/images/hinata-profile.jpg" alt="hinata-profile" />
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Hinata</p>
+          </div>
+        </li>
+        <li>
+          <span class="servers-hover-border"></span>
+          <img src="/images/shawn-profile.jpg" alt="shawn-profile" />
+          <span class="notification-number">3</span>
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Shawn</p>
+          </div>
+        </li>
+        <li>
+          <span class="servers-hover-border"></span>
+          <img src="/images/tanya-profile.jpg" alt="tanya-profile" />
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Tanya</p>
+          </div>
+        </li>
+        <li>
+          <span class="servers-hover-border"></span>
+          <img src="/images/ange-profile.png" alt="ange-profile" />
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Ange</p>
+          </div>
+        </li>
+        <li class="icon-nav-special">
+          <svg>
+            <use href="./src/icons/icons.svg#plus" />
+          </svg>
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Añadir un servidor</p>
+          </div>
+        </li>
+        <li class="icon-nav-special">
+          <span class="servers-hover-border"></span>
+          <svg>
+            <use href="./src/icons/icons.svg#safari" />
+          </svg>
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>Explora servidores descubriles</p>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <div class="messages-container">
+      <header class="messages-header">
+        <input type="text" value="" placeholder="Busca o inicia una conversación" class="messages-search-input" />
+      </header>
+      <section class="messages-section">
+        <article class="messages-row">
+          <div class="messages-row-options messages-row-options-active">
+            <svg>
+              <use href="./src/icons/icons.svg#friends" />
+            </svg>
+            <p>Amigos</p>
+          </div>
+          <div class="messages-row-options">
+            <svg>
+              <use href="./src/icons/icons.svg#wheel" />
+            </svg>
+            <p>Nitro</p>
+          </div>
+        </article>
+        <article class="messages-row-friends">
+          <header>
+            <h3>MENSAJES DIRECTOS</h3>
+            <div class="messages-row-friends-icon">
+              <div id="messages-md-button">
+                <svg>
+                  <use href="./src/icons/icons.svg#plus" />
+                </svg>
+              </div>
+              <div class="messages-row-friends-icon-popup">
+                <span class="triangulo-bottom"></span>
+                <p>Crear MD</p>
+              </div>
+              <div class="modal-new-md" id="modal-md-aside">
+                <header>
+                  <h4 class="modal-new-md-title">Seleccionar amigos</h4>
+                  <p class="modal-new-md-subtitle">
+                    Puedes añadir 9 amigos más.
+                  </p>
+                </header>
+                <input type="text" class="modal-new-md-input" placeholder="Escribe el nombre de usuario de un amigo" />
+                <ul class="modal-new-md-list">
+                  <li class="modal-new-md-list-item">
+                    <div>
+                      <div class="modal-new-md-list-item-image">
+                        <img src="/images/ange-profile.png" alt="ange profile" />
+                        <span></span>
+                      </div>
+                      <p>Lena</p>
+                      <p>Lena#123</p>
+                    </div>
+                    <input type="checkbox" id="friend-aside-1" class="modal-new-md-checkbox" />
+                    <label for="friend-aside-1" class="modal-new-md-label">
+                      <span class="checkmark"></span>
+                    </label>
+                  </li>
+                </ul>
+                <div class="modal-new-md-line"></div>
+                <button type="button" class="modal-new-md-create-button">
+                  Crear MD
+                </button>
+              </div>
+            </div>
+          </header>
+          <section>
+            <div class="messages-row-friends-user">
+              <div class="messages-row-friends-user-left">
+                <div class="messages-row-friends-user-left-image">
+                  <img src="images/ange-profile.png" alt="ange profile" />
+                  <span></span>
+                </div>
+                <p>Ange</p>
+              </div>
+              <svg>
+                <use href="src/icons/icons.svg#x" />
+              </svg>
+            </div>
+            <div class="messages-row-friends-user">
+              <div class="messages-row-friends-user-left">
+                <div class="messages-row-friends-user-left-image">
+                  <img src="images/lena-profile.jpg" alt="lena profile" />
+                  <span></span>
+                </div>
+                <p>Lena</p>
+              </div>
+              <svg>
+                <use href="src/icons/icons.svg#x" />
+              </svg>
+            </div>
+          </section>
+        </article>
+      </section>
+      <footer class="messages-footer">
+        <div class="messages-footer-userdata">
+          <div class="messages-footer-image">
+            <span class="messages-footer-image-online"></span>
+            <img src="/images/remi-remi.jpg" alt="remi-profile" />
+          </div>
+          <div class="messages-footer-user">
+            <p class="messages-footer-user-name">arnaiz2311</p>
+            <p class="messages-footer-user-state">En línea</p>
+          </div>
+        </div>
+        <div class="messages-footer-icons">
+          <div class="messages-footer-icons-container">
+            <svg>
+              <use href="./src/icons/icons.svg#mic" />
+            </svg>
+            <div class="messages-footer-icons-popup">
+              <div class="triangulo-bottom"></div>
+              <p>Silenciar</p>
+            </div>
+          </div>
+          <div class="messages-footer-icons-container">
+            <svg>
+              <use href="./src/icons/icons.svg#headphones" />
+            </svg>
+            <div class="messages-footer-icons-popup">
+              <div class="triangulo-bottom"></div>
+              <p>Ensordecer</p>
+            </div>
+          </div>
+          <div class="messages-footer-icons-container">
+            <svg>
+              <use href="./src/icons/icons.svg#settings" />
+            </svg>
+            <div class="messages-footer-icons-popup">
+              <div class="triangulo-bottom"></div>
+              <p>Ajustes de usuario</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <header class="header-container">
+      <div class="header-friends">
+        <div class="header-friends-container">
+          <svg>
+            <use href="./src/icons/icons.svg#friends" />
+          </svg>
+          <p>Amigos</p>
+        </div>
+        <div class="header-content-line"></div>
+        <ul class="header-friends-list">
+          <li class="header-friends-list-active">En línea</li>
+          <li>Todos</li>
+          <li>Pendiente</li>
+          <li>Bloqueado</li>
+          <li class="header-friends-list-green">Añadir amigo</li>
+        </ul>
+      </div>
+      <div class="header-content">
+        <div class="header-content-md" id="header-md-container">
+          <div id="md-header-button" style="display: grid; place-items: center">
+            <svg class="header-content-icon-popup">
+              <use href="./src/icons/icons.svg#message" />
+            </svg>
+          </div>
+          <div class="header-content-popup">
+            <span class="triangulo-top"></span>
+            <p>Nuevo grupo de MD</p>
+          </div>
+          <div class="modal-new-md" id="modal-md-header">
+            <header>
+              <h4 class="modal-new-md-title">Seleccionar amigos</h4>
+              <p class="modal-new-md-subtitle">Puedes añadir 9 amigos más.</p>
+            </header>
+            <input type="text" class="modal-new-md-input" placeholder="Escribe el nombre de usuario de un amigo" />
+            <ul class="modal-new-md-list">
+              <li class="modal-new-md-list-item">
+                <div>
+                  <div class="modal-new-md-list-item-image">
+                    <img src="/images/lena-profile.jpg" alt="lena profile" />
+                    <span></span>
+                  </div>
+                  <p>Lena</p>
+                  <p>Lena#123</p>
+                </div>
+                <input type="checkbox" id="friend-header-1" class="modal-new-md-checkbox" />
+                <label for="friend-header-1" class="modal-new-md-label">
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="modal-new-md-list-item">
+                <div>
+                  <div class="modal-new-md-list-item-image">
+                    <img src="/images/ange-profile.png" alt="ange profile" />
+                    <span></span>
+                  </div>
+                  <p>Lena</p>
+                  <p>Lena#123</p>
+                </div>
+                <input type="checkbox" id="friend-header-2" class="modal-new-md-checkbox" />
+                <label for="friend-header-2" class="modal-new-md-label">
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+              <li class="modal-new-md-list-item">
+                <div>
+                  <div class="modal-new-md-list-item-image">
+                    <img src="/images/tanya-profile.jpg" alt="tany profile" />
+                    <span></span>
+                  </div>
+                  <p>Lena</p>
+                  <p>Lena#123</p>
+                </div>
+                <input type="checkbox" id="friend-header-3" class="modal-new-md-checkbox" />
+                <label for="friend-header-3" class="modal-new-md-label">
+                  <span class="checkmark"></span>
+                </label>
+              </li>
+            </ul>
+            <div class="modal-new-md-line"></div>
+            <button type="button" class="modal-new-md-create-button">
+              Crear MD
+            </button>
+          </div>
+        </div>
+        <span class="header-content-line"></span>
+        <div class="header-content-discord">
+          <div class="header-content-md">
+            <div id="inbox">
+              <svg class="header-content-icon-popup">
+                <use href="./src/icons/icons.svg#inbox" />
+              </svg>
+            </div>
+            <div class="header-content-popup">
+              <span class="triangulo-top"></span>
+              <p>Bandeja de entrada</p>
+            </div>
+            <div class="header-content-inbox-modal" id="inbox-modal">
+              <header>
+                <div class="header-content-inbox-modal-header">
+                  <div class="header-content-inbox-modal-header-inbox">
+                    <svg class="header-content-icon-popup">
+                      <use href="./src/icons/icons.svg#inbox" />
+                    </svg>
+                    <h4>Bandeja de entrada</h4>
+                  </div>
+                  <div class="header-content-inbox-modal-header-user">
+                    <svg class="header-content-icon-popup">
+                      <use href="./src/icons/icons.svg#friends" />
+                    </svg>
+                    <span>0</span>
+                  </div>
+                </div>
+                <ul class="header-content-inbox-modal-list">
+                  <li class="header-content-inbox-modal-list-active">
+                    Para ti
+                  </li>
+                  <li>No leídos</li>
+                  <li>Menciones</li>
+                </ul>
+              </header>
+              <section>
+                <img src="/images/discord-inbox.png" alt="inbox" />
+                <p>
+                  <span>CONSEJO:</span> Abre la bandeja de entrada pulsando
+                  CTRL + I y marca el primer mensaje como leído con CTRL +
+                  Máyus + E.
+                </p>
+              </section>
+            </div>
+          </div>
+          <div class="header-content-md">
+            <svg class="header-content-icon-popup">
+              <use href="./src/icons/icons.svg#question" />
+            </svg>
+            <div class="header-content-popup">
+              <span class="triangulo-top"></span>
+              <p>Ayuda</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="section-container">
+        <div class="card"> 
+          <div class="top"> 
+            <div class="userDetails"> 
+              <div class="profilepic"> 
+                <div class="profile_img"> 
+                  <div class="image"> 
+                    <img src= 
+  "https://media.geeksforgeeks.org/wp-content/uploads/20220609093229/g-200x200.png"
+                      alt="img8"> 
+                  </div> 
+                </div> 
+              </div> 
+              <h3>Ayush Agarwal 
+                <br> 
+                <span>Mumbai, India</span> 
+            </h3> 
+            </div> 
+            <div> 
+              <span class="dot"> 
+                <i class="fas fa-ellipsis-h"></i> 
+              </span> 
+            </div> 
+          </div> 
+          <div class="imgBx"> 
+            <img src= 
+"https://media.geeksforgeeks.org/wp-content/uploads/20220609090112/gfg1-298x300.jpeg"
+							alt="post-1" class="cover"> 
+          </div> 
+          <div class="bottom"> 
+              <p class="message"> 
+                <b>Raju Modi</b> 
+              </p> 
+              <h5 class="postTime">2 hours ago</h5> 
+            <div class="addComments"> 
+              <div class="reaction"> 
+                <h3> 
+                <i class="far fa-smile"></i> 
+                </h3> 
+              </div> 
+              <input type="text"
+                class="text"
+                placeholder="Add a comment..."> 
+              <div class="post"><a href="#">Post</a></div>
+            </div> 
+          </div> 
+        </div>
+      
+    </section>
+    <aside class="aside-container">
+      <h3>Activo ahora</h3>
+      <section class="aside-section">
+        <h4>Por ahora esta todo tranquilo</h4>
+        <p>
+          Cuando un amigo empiece a realizar una actividad, como jugar o
+          hablar por voz, ¡te lo mostraremos aqui!
+        </p>
+      </section>
+    </aside>
+  </main>
+
+</body>
+
+</html>

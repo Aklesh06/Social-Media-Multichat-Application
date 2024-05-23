@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    {% load static %}
+    <!--<link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>-->
+
+    <!-- swiper css link  -->
+    <!--<link rel="stylesheet" href='https://unpkg.com/swiper@7/swiper-bundle.min.css' />-->
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="{% static 'Registration.css' %}">
+    <script type="text/javascript">
+      function Job_Profile(){
+          var element = document.getElementById("batch_year").value;
+          var Occupation = document.getElementById("Occupation");
+          if(element.trim() != ''){
+              year = element.slice(0,4)
+              if(year <= 2019){
+                Occupation.style.display = 'block';
+              }
+            }
+          else{
+            Occupation.style.display = 'none';
+          }
+      }
+    </script>
+</head>
+<body >
+    <div id="popup" class="popup">
+        <div class="popup-content">
+          <a href="/login"><span class="close">&times;</span></a>
+          <h2>Personal Information</h2>
+          <form id="info-form" action="register" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="input-field" placeholder="Your Name" required>
+            <label for="age">Batch Year:</label>
+            <input type="tel" id="batch_year" name="batch_year" class="input-field" pattern="[0-9]{4}-[0-9]{4}" placeholder="Your Batch year [Ex :- 2021-2025]" onchange="Job_Profile()" required><br>
+            <div id = "Occupation" style="display : none;">
+              <label for="age">Job Profile:</label>
+              <input type="text" id="occupation" name="occupation" class="input-field" placeholder="Current Occupation" >
+            </div>
+            <label>Gender:</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="gender" value="Male" required>
+                Male
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="gender" value="Female" required>
+                Female
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="gender" value="Other" required>
+                Other
+              </label>
+            </div><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" class="input-field" placeholder="Your Email" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" class="input-field" pattern="[6789][0-9]{9}" maxlength="10" placeholder="Phone no" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="input-field" placeholder="Password" required>
+            <label for="re-password">Repeat Password:</label>
+            <input type="password" id="password" name="re_password" class="input-field" placeholder="Repeat your password"required>
+          </br>
+            <label for="image">Profile Image:</label>
+            <input type="file" id="image" name="image" accept="image/*">
+            <style>
+              h3{color: purple;}
+            </style>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+          </br>
+            <button type="submit" class="submit-button" id="submit-button">Submit</button>
+          </form>
+        </div>
+      </div>
+</body>
+</html>

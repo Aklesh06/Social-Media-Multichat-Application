@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="src/icons/discord.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alumn-chat</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'alumn.css' %}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Space+Grotesk:wght@500&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+  <main class="container-grid">
+    <nav class="nav-list">
+      <div class="container-discord-brand">
+        <div class="container-discord-icon">
+          <span class="discord-icon-border"></span>
+          <img src={{user.profile_image.url}} height="100%" width="100%"/>
+          <div class="pop-up-nav">
+            <span class="triangulo"></span>
+            <p>{{user.username}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="line-nav"></div>
+      <ul class="servers-list">
+        {%for acc in users%}
+          {% if acc != user and acc.id != 1%}
+            <li>
+              <span class="servers-hover-border"></span>
+              <img src={{acc.profile_image.url}} height="100%" width="100%"/>
+              <div class="pop-up-nav">
+                <span class="triangulo"></span>
+                <p>{{acc.username}}</p>
+              </div>
+            </li>
+          {%endif%}
+        {%endfor%}
+      </ul>
+    </nav>
+    <div class="messages-container">
+      <header class="messages-header">
+        <h2>POST</h2>
+      </header>
+      <section class="messages-section">
+        <article class="messages-row">
+          <div class="messages-row-options messages-row-options-active">
+            <svg>
+              <use href="./src/icons/icons.svg#friends" />
+            </svg>
+            <a href={%url "post" user.id %}>
+              Post Content
+            </a>
+          </div>
+        </article>
+    </div>
+
+    <header class="header-container">
+      <div class="header-friends">
+       <div class="header-friends-container">
+          <a href='event_page'>
+            Event
+          </a>
+        </div>
+      </div>
+      <div class="header-content">
+        <div class="header-content-md" id="header-md-container">
+          <div id="md-header-button" style="display: grid; place-items: center">
+            <a href= 'logout' style="color : white; background : red; width : 150%; height : 120%; text-align : center; border-radius : 5px;">Logout</a>
+          </div>
+          <div class="header-content-popup">
+          </div> 
+          <div class="modal-new-md" id="modal-md-header">
+          </div>
+        </div> 
+        <span class="header-content-line"></span>
+        <div class="header-content-discord">
+        </div>
+      </div>
+    </header>
+    <section class="section-container">
+      {% for x in all_post %}
+        {% if forloop.first %}
+            <div class="row ">
+        {% endif %}
+        <div class="card"> 
+          <div class="top"> 
+            <div class="userDetails"> 
+              <div class="profilepic"> 
+                <div class="profile_img"> 
+                  <div class="image">
+                    <img src={{x.account.profile_image.url}} height="70%" width="70%">
+                  </div> 
+                </div> 
+              </div> 
+              <h3>{{x.account.username}}
+                <br> 
+                <span>{{x.account.email}}</span> 
+            </h3> 
+            </div> 
+            <div> 
+              <span class="dot"> 
+                <i class="fas fa-ellipsis-h"></i> 
+              </span> 
+            </div> 
+          </div> 
+          <p class="message"> 
+            <h2 class="postTime">{{x.caption}}</h2>
+          </p> 
+          <div class="imgBx"> 
+            {%if x.image%}
+              <img src={{x.image.url}} height="70%" width="70%" class="img-thumbnail" alt="..." class="cover">
+            {%endif%} 
+          </div> 
+          <div class="bottom"> 
+              <h5 class="postTime">{{x.date}}</h5> 
+          
+            <div class="addComments"> 
+              <div class="reaction"> 
+                <h3> 
+                <i class="far fa-smile"></i> 
+                </h3> 
+                </div> 
+              <div class="post">
+                <a href={% url 'comment' x.id user.id %} class="a1">Add a comment</a>
+              </div>
+              <div>
+                {%if x.account.id == user.id%}
+                  <a href={% url 'delete_post' x.id%} class="a2">Delete Post</a>
+                {%endif%}
+              </div>
+            </div> 
+          </div> 
+        </div>
+          {% if forloop.counter|divisibleby:3 %}
+          </div>
+          <div class=row>{% endif %}
+          {% if forloop.last %}</div>{% endif %}
+
+       {% endfor %}
+      
+    </section> 
+    
+    <aside class="aside-container">
+      <h3>Profile</h3>
+      <section class="aside-section">
+        <div class="profile_image">
+          <img src={{user.profile_image.url}} height="70%" width="70%" style="border-radius : 50%;">
+        </div>
+        Username:
+        <div class='box'>
+          {{user.username}}
+        </div>
+        Email:
+        <div class='box'>
+          {{user.email}}
+        </div>
+        Phone:
+        <div class='box'>
+          {{user.phone}}
+        </div>
+        Batch:
+        <div class='box'>
+          {{user.batch}}
+        </div>
+        Job Profile:
+        <div class='box'>
+          {{user.job_profile}}
+        </div>
+        Bio:
+        <div class='box'>
+          {{user.bio}}
+        </div>
+        <br>
+        <a href='edit'><button type="submit" class="submit-button" id="submit-button" >Edit</button></a>
+      </section>
+    </aside>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>

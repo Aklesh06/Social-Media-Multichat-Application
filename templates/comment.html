@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Comments</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'comment.css' %}" />
+    </head>
+    <body>  
+        <h1>{{ post.caption }}</h1>
+        <p>
+            {%if post.image%}
+            <img src="{{post.image.url}}" height="13%" width="36%" class="img-thumbnail" alt="..." class="cover">
+            {%endif%} 
+        </p>
+        <a href={% url 'home'%}>
+            <button type="submit" class="back">Back To Home</button>
+        </a>
+        <h2>Comments:</h2>
+        <ul>
+            {% for comment in comments %}
+            <div class="one-line">
+            <div class="profilepic"> 
+                <div class="profile_img"> 
+                  <div class="image">
+                    <img src={{comment.account.profile_image.url}} height="20%" width="40%"/>
+                  </div> 
+                </div> 
+              </div> 
+                <h2>{{ comment.account.username }}</h2>
+            </div>
+            <div class="one-line-distance">
+                <li><h3>{{ comment.text }}</h3></li>
+                {%if comment.account.id == account.id%} 
+                    <a href={% url 'delete_comment' comment.id %}>
+                        <button type="submit" class="back">Delete comment</button>
+                    </a>
+                {%endif%}
+            </div>
+            {% endfor %}
+        </ul>
+        
+        <form method="post" action="{% url 'comment' post.id account.id %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="submit">Submit Comment</button>
+        </form> 
+    </body>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Succesfully Post</title>
+        {% load static %}
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+        <link rel="stylesheet" href="{% static "img_successful.css" %}">
+    </head>
+    <body>
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <a href={%url "home"%}><span class="close">&times;</span></a>
+                {% if obj %}
+                <h3>Succesfully uploaded : {{obj.caption}}</h3>
+                    {%if obj.image%}
+  
+                            <img src={{ obj.image.url}}  height="70%" width="70%"/>
+
+                    {%endif%}
+                {% endif %}
+            </div>
+          </div>
+    </body>
